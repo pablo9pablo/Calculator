@@ -1,51 +1,117 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Odin</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
+:root {
+    --bg-color: #222;
+    --calc-bg: #333;
+    --screen-bg: #ecf0f1;
+    --btn-bg: #fefefe;
+    --btn-operator: #f1c40f;
+    --btn-red: #e74c3c;
+    --btn-green: #2ecc71;
+    --btn-blue: #3498db;
+}
 
-    <main class="main-container">
-        <div class="calculator">
-            <div class="screen">
-                <div class="screen-last" id="lastOperationScreen"></div>
-                <div class="screen-current" id="currentOperationScreen">0</div>
-            </div>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
 
-            <div class="buttons-grid">
-                <button class="btn btn-red span-2" id="clearBtn">AC</button>
-                <button class="btn btn-blue" id="deleteBtn">DEL</button>
-                <button class="btn btn-operator" data-operator="/">÷</button>
-                
-                <button class="btn" data-number>7</button>
-                <button class="btn" data-number>8</button>
-                <button class="btn" data-number>9</button>
-                <button class="btn btn-operator" data-operator="*">×</button>
-                
-                <button class="btn" data-number>4</button>
-                <button class="btn" data-number>5</button>
-                <button class="btn" data-number>6</button>
-                <button class="btn btn-operator" data-operator="-">−</button>
-                
-                <button class="btn" data-number>1</button>
-                <button class="btn" data-number>2</button>
-                <button class="btn" data-number>3</button>
-                <button class="btn btn-operator" data-operator="+">+</button>
-                
-                <button class="btn" data-number>.</button>
-                <button class="btn" data-number>0</button>
-                <button class="btn btn-green span-2" id="equalsBtn">=</button>
-            </div>
-        </div>
-    </main>
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-    <footer class="footer">
-        <p>Creado para The Odin Project</p>
-    </footer>
+.calculator {
+    width: 350px;
+    background-color: var(--calc-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
 
-</body>
-</html>
+/* --- PANTALLA --- */
+.screen {
+    background-color: var(--screen-bg);
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.screen-last {
+    min-height: 30px;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.screen-current {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- BOTONES (GRID) --- */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    gap: 10px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--btn-bg);
+    transition: filter 0.1s;
+}
+
+.btn:hover {
+    filter: brightness(0.9);
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+/* Estilos específicos de botones */
+.btn-operator {
+    background-color: var(--btn-operator);
+    color: white;
+}
+
+.btn-red {
+    background-color: var(--btn-red);
+    color: white;
+}
+
+.btn-blue {
+    background-color: var(--btn-blue);
+    color: white;
+}
+
+.btn-green {
+    background-color: var(--btn-green);
+    color: white;
+}
+
+.span-2 {
+    grid-column: span 2; /* Ocupa 2 columnas */
+}
+
+.footer {
+    margin-top: 20px;
+    color: white;
+    font-size: 0.8rem;
+}
